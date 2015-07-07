@@ -64,15 +64,26 @@ def format():
 	x = player_character
 	return(s.format(*x))
 
-#run it
-while len(player_character) < 8: #breaks program when final list is full 
+while len(player_character) < 8:
+	yn = input("Would you like to roll for crafting skills? Y/N:  ") #ask to modify crafting_enabled
+
+	#run, debug input
+	if yn == 'Y':
+		crafting_enabled = True
+		print("Okay, your character may have crafting skills.")
+	elif yn == 'N':
+		print("Okay, your character will not have crafting skills.")
+	else:
+		print("I'm sorry, I did not understand your answer.")
+		yn = input("Would you like to roll for crafting skills? Please enter Y or N:  ")
+
 	random_gender()
 	random_race()
 	random_magic()
 	random_combat()
 	random_stealth()
 	create_skills()
-	create_player() #fill list
-	say = format() #make list pretty
+	create_player()
+	say = format()
 	print(say)
 	
